@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjetoFinalAPIWeb", "ProjetoFinalAPIWeb.csproj", "{5D34CB96-C4A5-4B0E-A9B8-22DF535856A5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjetoFinalAPIWeb", "ProjetoFinalAPIWeb\ProjetoFinalAPIWeb.csproj", "{5D34CB96-C4A5-4B0E-A9B8-22DF535856A5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjetoFinalAPIWeb.Infra.Data", "..\ProjetoFinalAPIWeb.Infra.Data\ProjetoFinalAPIWeb.Infra.Data.csproj", "{32FCE17E-C8BD-4ED6-9C4F-BA9319374599}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjetoFinalAPIWeb.Infra.Data", "ProjetoFinalAPIWeb.Infra.Data\ProjetoFinalAPIWeb.Infra.Data.csproj", "{32FCE17E-C8BD-4ED6-9C4F-BA9319374599}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjetoFinalAPIWeb.Service", "..\ProjetoFinalAPIWeb.Service\ProjetoFinalAPIWeb.Service.csproj", "{45093628-A543-4917-ACAA-52CFB1B855F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProjetoFinalAPIWeb.Service", "ProjetoFinalAPIWeb.Service\ProjetoFinalAPIWeb.Service.csproj", "{45093628-A543-4917-ACAA-52CFB1B855F4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FD4490D0-5830-4E21-8B96-F7F80F1222AB}"
 	ProjectSection(SolutionItems) = preProject
