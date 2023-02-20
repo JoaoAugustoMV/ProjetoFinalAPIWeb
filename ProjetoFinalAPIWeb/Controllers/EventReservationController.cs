@@ -58,15 +58,19 @@ namespace ProjetoFinalAPIWeb.Controllers
             return Created("Reserva Feita", await _serviceReservation.AdicionarReserva(eventReservation));
         }
 
-        [HttpPut("{id}/{quantidade}")]
+        [HttpPut("{idReserva}/{quantidade}")]
         [Authorize(Roles = "admin")]        
         [ProducesResponseType(StatusCodes.Status201Created)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         public async Task<ActionResult> AtualizarQuantidadeReserva(long idReserva, long quantidade)
         {
-            return Ok(await _serviceReservation.AtualizarQuantidadeReserva(idReserva, quantidade));
+            if(!await _serviceReservation.AtualizarQuantidadeReserva(idReserva, quantidade))
+            {
+                return NotFound();
+            }
+            return Ok();
         }
 
         [HttpDelete("{idReserva}")]
