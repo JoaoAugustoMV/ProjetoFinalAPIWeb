@@ -129,7 +129,7 @@ namespace ProjetoFinalAPIWeb.Controllers
         [AllowAnonymous]
         public async Task<ActionResult<IEnumerable<CityEventEntity>>> FiltrarPorTitulo(string termo)
         {
-            Console.WriteLine("Controller " + termo);
+            
             return Ok(await _service.ObterPorTitulo(termo));
         }     
 

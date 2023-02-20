@@ -39,8 +39,7 @@ namespace ProjetoFinalAPIWeb.Service.Service
         }
 
         public async Task<IEnumerable<CityEventEntity>> ObterPorTitulo(string termo)
-        {
-            Console.WriteLine("Service " + termo);
+        {            
             return await _repository.ObterPorTitulo(termo);
         }
         #endregion
