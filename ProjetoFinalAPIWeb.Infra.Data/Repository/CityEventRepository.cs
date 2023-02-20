@@ -7,12 +7,12 @@ namespace ProjetoFinalAPIWeb.Infra.Data.Repository
 {
     public class CityEventRepository: ICityEventRepository
     {
-        private string stringConn = Environment.GetEnvironmentVariable("MySQL_Teste");
+        private string stringConn = Environment.GetEnvironmentVariable("DATABASE_CONFIG");
 
         #region Query
         public async Task<IEnumerable<CityEventEntity>> ObterTodos()
         {
-            string query = "SELECT * FROM CityEvents";
+            string query = "SELECT * FROM CityEvent";
 
             using MySqlConnection conn = new(stringConn);
 
@@ -20,7 +20,7 @@ namespace ProjetoFinalAPIWeb.Infra.Data.Repository
         }
         public async Task<CityEventEntity> ObterPorId(long idEvent)
         {
-            string query = "SELECT * FROM CityEvents WHERE IdEvent = @idEvent";
+            string query = "SELECT * FROM CityEvent WHERE IdEvent = @idEvent";
 
             DynamicParameters param = new ();
             param.Add("idEvent", idEvent);
@@ -59,7 +59,7 @@ namespace ProjetoFinalAPIWeb.Infra.Data.Repository
         public async Task<bool> AdicionarEvento(CityEventEntity cityEvent)
         {
             //if(cityEvent.DateHourEvent)
-            string query = "INSERT INTO CityEvents " +
+            string query = "INSERT INTO CityEvent " +
                 "(Title, Description, DateHourEvent, Local, Address, Price, Status) VALUES " +
                 "( @Title, @Description, @DateHourEvent, @Local, @Address,  @Price, @Status)";
 
@@ -75,7 +75,7 @@ namespace ProjetoFinalAPIWeb.Infra.Data.Repository
 
         public async Task<bool> AtualizarEvento(long idEvent, CityEventEntity cityEvent)
         {
-            string query = "UPDATE CityEvents SET Title = @Title, Description = @Description, DateHourEvent = @DateHourEvent, Local = @Local , Address = @Address, Price = @Price, Status = @Status WHERE IdEvent = @IdEvent";
+            string query = "UPDATE CityEvent SET Title = @Title, Description = @Description, DateHourEvent = @DateHourEvent, Local = @Local , Address = @Address, Price = @Price, Status = @Status WHERE IdEvent = @IdEvent";
 
             DynamicParameters param = new(cityEvent);
             param.Add("idEvent", idEvent);
@@ -86,7 +86,7 @@ namespace ProjetoFinalAPIWeb.Infra.Data.Repository
         }
         public async Task<bool> ExcluirEvento(long idEvent)
         {            
-            string query = "DELETE FROM CityEvents WHERE IdEvent = @idEvent";
+            string query = "DELETE FROM CityEvent WHERE IdEvent = @idEvent";
 
             DynamicParameters param = new();
             param.Add("idEvent", idEvent);
@@ -97,7 +97,7 @@ namespace ProjetoFinalAPIWeb.Infra.Data.Repository
         
         public async Task<bool> InativarEvento(long idEvent)
         {
-            string query = "UPDATE CityEvents SET Status = false WHERE idEvent = @idEvent";
+            string query = "UPDATE CityEvent SET Status = false WHERE idEvent = @idEvent";
             DynamicParameters param = new();
             param.Add("idEvent", idEvent);
 
@@ -107,7 +107,7 @@ namespace ProjetoFinalAPIWeb.Infra.Data.Repository
         #endregion
         public async Task<bool> PossuiReservas(long idEvent)      
         {
-            string query = "SELECT * FROM EventReservations WHERE IdEvent = @idEvent";
+            string query = "SELECT * FROM EventReservation WHERE IdEvent = @idEvent";
 
             DynamicParameters param = new ();
             param.Add("idEvent", idEvent);
@@ -127,7 +127,7 @@ namespace ProjetoFinalAPIWeb.Infra.Data.Repository
         {
             if(eventos == null)
             {
-                string query = "SELECT * FROM CityEvents WHERE Price BETWEEN @precoMinimo AND @precoMaximo";
+                string query = "SELECT * FROM CityEvent WHERE Price BETWEEN @precoMinimo AND @precoMaximo";
 
                 DynamicParameters param = new();
                 param.Add("precoMinimo", precoMinimo);
@@ -146,7 +146,7 @@ namespace ProjetoFinalAPIWeb.Infra.Data.Repository
             
             if(eventos == null)
             {                
-                string query = "SELECT * FROM CityEvents WHERE Title LIKE @termo";
+                string query = "SELECT * FROM CityEvent WHERE Title LIKE @termo";
                 DynamicParameters param = new();
                 param.Add("termo", "%" + termo + "%");
 
@@ -159,7 +159,7 @@ namespace ProjetoFinalAPIWeb.Infra.Data.Repository
 
         public async Task<IEnumerable<CityEventEntity>> FiltrarPorLocal(string local, IEnumerable<CityEventEntity> eventos = null)
         {
-            string query = $"SELECT * FROM CityEvents WHERE Local LIKE @local";
+            string query = $"SELECT * FROM CityEvent WHERE Local LIKE @local";
                           //SELECT * FROM CityEvents WHERE Local LIKE '%tri%';
             if(eventos == null)
             {
@@ -180,7 +180,7 @@ namespace ProjetoFinalAPIWeb.Infra.Data.Repository
         {
             if(eventos == null)
             {
-                string query = "SELECT * FROM CityEvents WHERE DateHourEvent = @data";
+                string query = "SELECT * FROM CityEvent WHERE DateHourEvent = @data";
                 DynamicParameters param = new(data);
                 param.Add("data", data);
                 using MySqlConnection conn = new(stringConn);
