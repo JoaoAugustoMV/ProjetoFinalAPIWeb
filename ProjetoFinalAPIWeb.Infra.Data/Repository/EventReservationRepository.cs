@@ -44,8 +44,7 @@ namespace ProjetoFinalAPIWeb.Repository
             param.Add("id", id);
             param.Add("quantidade", quantidade);
 
-            using MySqlConnection conn = new(stringConn);
-            Console.WriteLine(id + quantidade);
+            using MySqlConnection conn = new(stringConn);            
             return await conn.ExecuteAsync(query, param) > 0;
         }
 
