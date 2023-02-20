@@ -68,16 +68,6 @@ namespace ProjetoFinalAPIWeb.Service.Service
             return RetornoDeleteEvent.Removido;
         }          
 
-        public bool ValidarData(DateTime date)
-        {
-            return date > DateTime.Now;
-        }
-
-        public bool ValidarPreco(decimal preco)
-        {
-            return preco >= 0;
-        }
-
         public async Task<bool> EventoExiste(long idEvent)
         {
             return await _repository.ObterPorId(idEvent) != null;

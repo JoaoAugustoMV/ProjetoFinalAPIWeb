@@ -34,16 +34,7 @@ namespace ProjetoFinalAPIWeb.Controllers
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         [ProducesResponseType(StatusCodes.Status403Forbidden)]
         public async Task<IActionResult> AdicionarEvento(CityEventEntity cityEvent)
-        {
-                        
-            if(!_service.ValidarPreco(cityEvent.Price))
-            {
-                return BadRequest(new
-                {
-                    sucess = false,
-                    errors = "Preco Invalido: Apenas valores igual ou maior que 0"
-                });
-            }
+        {            
             if(!await _service.AdicionarEvento(cityEvent))
             {
                 return BadRequest();

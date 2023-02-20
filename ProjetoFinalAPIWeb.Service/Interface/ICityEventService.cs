@@ -22,7 +22,6 @@ namespace ProjetoFinalAPIWeb.Service.Interface
         #endregion
         Task<bool> EventoExiste(long idEvent);
         Task<bool> EventoDisponivel(long idEvent);
-        bool ValidarPreco(decimal preco);
-        bool ValidarData(DateTime date);
+        
     }
 }
