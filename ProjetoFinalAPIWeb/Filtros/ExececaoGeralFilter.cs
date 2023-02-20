@@ -23,9 +23,11 @@ namespace ProjetoFinalAPIWeb.Filtros
                     break;
                 default:
                     context.HttpContext.Response.StatusCode = StatusCodes.Status500InternalServerError;
-                    context.Result = new ObjectResult(problem);
+                    
                     break;
+            
             }
+            context.Result = new ObjectResult(problem);
         }
     }
 }

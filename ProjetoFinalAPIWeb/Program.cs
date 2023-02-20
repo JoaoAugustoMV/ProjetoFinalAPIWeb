@@ -23,16 +23,15 @@ namespace ProjetoFinalAPIWeb
             //{
             //    options.UseSqlServer(builder.Configuration.GetConnectionString("ConexaoPadrao"), p => p.EnableRetryOnFailure());
             //});
-            
+
             //.ConfigureApiBehaviorOptions(options =>
             //{
             //    options.SuppressModelStateInvalidFilter = true;
             //}); ;
 
-            
             builder.Services.AddControllers(options =>
             {
-                //options.Filters.Add(typeof(ValidarDataFilter));
+                options.Filters.Add(typeof(ExececaoGeralFilter));
             }).AddJsonOptions(options => {
                 options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;                
                 });
